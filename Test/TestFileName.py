@@ -9,8 +9,9 @@ from pathlib import Path
 from glob import glob
 import string
 
-sPath='C:/Users/aaron/Documents/MyZoteroFiles_IRF'
 
+# sPath='C:/Users/aaron/Documents/MyZoteroFiles_IRF'
+sPath='I:/MyZoteroFiles_DHF'
 lstFilelist=listdir(sPath)
 
 print(lstFilelist)
@@ -21,18 +22,31 @@ print(lstFilelist)
 path1=Path(sPath).iterdir()
 
 # 取得文件夹中的文件名
+
+count=0
+filewholepath=''
+
 for eachfile in path1:
     # print(eachfile.name)
     filename=eachfile.stem
+
     # if len(filename)<9:
     #     print(filename)
     # else:
     #     print(filename)
     # 取得需要的前11位，看是否
-    if len(filename)>9:
-        needfilename=filename[0:12]
-        print(needfilename)
-        if(filename[12]==)
+    if count<300:
+        if len(filename)>12:
+            needfilename=filename[0:13]
+            # print(filename)
+            if(filename[9]=='_') or (filename[11]=='_'):
+                print('correct: ' + filename)
+                # 判断
+                # 文件改名
+                newfilenamelist=str.split(filename,"_",1) #函数里的1表示只分割1次
+                newfilename=newfilenamelist[0] + " " +  newfilenamelist[1] + eachfile.suffix
+                print(newfilename)
+                os.rename(sPath + '/' + filename+eachfile.suffix,sPath + '/' + newfilename)
+                count=count+1
 
-    #判断
-    # 文件改名
+
